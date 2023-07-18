@@ -11,6 +11,7 @@ async function getData () {
             const cFO = await appSDK.location.CustomField;
             const cFD = await cFO.field.getData();
             data = cFD;
+            console.log(appSDK)
         })
     })
     return data;
