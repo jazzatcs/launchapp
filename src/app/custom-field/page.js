@@ -8,7 +8,7 @@ async function getData () {
     useEffect(() => {
         const ContentstackAppSDK = dynamic(() => import('@contentstack/app-sdk'));
         ContentstackAppSDK.init().then(async (appSDK) => {
-            const cFO = appSDK.location.CustomField;
+            const cFO = await appSDK.location.CustomField;
             const cFD = await cFO.field.getData();
             data = cFD;
         })
