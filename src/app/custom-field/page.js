@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 
 async function getData() {
-    let data = "";
+    let data;
     useEffect(async () => {
         const ContentstackAppSDK = (await import("@contentstack/app-sdk"))
             .default;
@@ -19,6 +19,6 @@ async function getData() {
 
 export default async function Page() {
     const data = await getData();
-    console.log(data.stack)
+    console.log(data)
     return <p>Serving from Launch. </p>;
 }
