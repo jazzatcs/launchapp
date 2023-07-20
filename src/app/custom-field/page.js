@@ -15,6 +15,7 @@ async function getData() {
             if (config && Object.keys(config).length === 0) {
                 console.log(`No configuration available`);
             }
+            data = appSDK;
             const customFieldObject = await appSDK.location.CustomField;
             setCustomField(customFieldObject);
             var fieldData = await customFieldObject.field.getData();
@@ -26,7 +27,7 @@ async function getData() {
             }
         });
     });
-    return appSDK;
+    return data;
 }
 
 export default async function Page() {
