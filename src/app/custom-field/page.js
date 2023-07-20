@@ -10,8 +10,8 @@ async function getData() {
         ContentstackAppSDK.init().then(async (appSDK) => {
             const cFO = await appSDK.location.CustomField;
             const cFD = await cFO.field.getData();
-            data = appSDK;
-            console.log(appSDK)
+            data = {...appSDK};
+            // console.log(appSDK)
         });
     });
     return data;
