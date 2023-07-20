@@ -26,10 +26,10 @@ async function getData() {
             }
         });
     });
-    return data;
+    return appSDK;
 }
 
 export default async function Page() {
     const data = await getData();
-    return <p>hi{data}</p>;
+    return <p>Serving from Launch. {data.stack._data.name}</p>;
 }
