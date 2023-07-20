@@ -3,9 +3,6 @@ import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 
 async function getData() {
-    const [groups, setGroups] = useState([]);
-    const [customField, setCustomField] = useState();
-    const [config, setConfig] = useState();
     let data = "";
     useEffect(async () => {
         const ContentstackAppSDK = (await import("@contentstack/app-sdk"))
@@ -22,5 +19,6 @@ async function getData() {
 
 export default async function Page() {
     const data = await getData();
+    console.log(data.stack)
     return <p>Serving from Launch. </p>;
 }
