@@ -11,20 +11,10 @@ async function getData() {
         const ContentstackAppSDK = (await import("@contentstack/app-sdk"))
             .default;
         ContentstackAppSDK.init().then(async (appSDK) => {
-            setConfig(await appSDK.getConfig());
-            if (config && Object.keys(config).length === 0) {
-                console.log(`No configuration available`);
-            }
+            const cFO = await appSDK.location.CustomField;
+            const cFD = await cFO.field.getData();
             data = appSDK;
-            const customFieldObject = await appSDK.location.CustomField;
-            setCustomField(customFieldObject);
-            var fieldData = await customFieldObject.field.getData();
-            const fieldConfig = await customFieldObject.fieldConfig;
-            if (!isEmpty(fieldData) && fieldData !== null) {
-                if (fieldData.constructorGroups) {
-                    setGroups(fieldData.constructorGroups);
-                }
-            }
+            console.log(appSDK)
         });
     });
     return data;
@@ -32,5 +22,5 @@ async function getData() {
 
 export default async function Page() {
     const data = await getData();
-    return <p>Serving from Launch. {data.stack._data.name}</p>;
+    return <p>Serving from Launch. </p>;
 }
